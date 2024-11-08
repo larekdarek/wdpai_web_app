@@ -1,0 +1,46 @@
+# Ignorowanie folderów IDE
+.idea/
+python_server/.idea/
+
+# Ignorowanie plików Pythona
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Ignorowanie plików środowiska wirtualnego
+venv/
+env/
+*.venv
+*.env
+
+# Ignorowanie plików logów
+*.log
+
+# Ignorowanie plików bazy danych
+postgres_data/
+*.sqlite3
+
+# Ignorowanie plików konfiguracyjnych
+.env
+*.env
+docker-compose.override.yml
+
+# Ignorowanie plików systemowych
+.DS_Store
+Thumbs.db
+
+# Ignorowanie plików kompilacji
+*.pyc
+*.pyo
+
+# Ignorowanie plików testowych
+.coverage
+pytest_cache/
+htmlcov/
+
+# Ignorowanie plików debugowania
+debug.log
