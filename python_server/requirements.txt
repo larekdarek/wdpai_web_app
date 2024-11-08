@@ -1,2 +1,4 @@
 Flask
 flask-cors
+watchdog==5.0.3 
+psycopg2==2.9.1
