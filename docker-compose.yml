@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"  # Expose port 8080 for the web server
+    depends_on:
+      - python_server
+    networks:
+      - webnet
+
+  python_server:
+    build: ./python_server
+    # Remove the port mapping as it's not needed externally
+    # ports:
+    #   - "5000:5000"
+    networks:
+      - webnet
+
+networks:
+  webnet: 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Management</title>
+    
+    <!-- Dołączenie zewnętrznego pliku CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+    <!-- Dołączenie zewnętrznego pliku JavaScript z atrybutem defer, aby skrypt załadował się po parsowaniu HTML -->
+    <script defer src="logic.js"></script>
+</head>
+<body class="body">
+    <div class="container">
+        <!-- Formularz dodawania członków zespołu -->
+        <div class="form-container">
+            <h2 class="title">Let's level up your brand, together</h2>
+            <form id="team-form" class="team-form">
+                <!-- Etykieta dla pola First Name -->
+                <label for="first-name" class="form-label">First name</label>
+                <input type="text" id="first-name" class="input-text" placeholder="First name" required>
+                
+                <!-- Etykieta dla pola Last Name -->
+                <label for="last-name" class="form-label">Last name</label>
+                <input type="text" id="last-name" class="input-text" placeholder="Last name" required>
+                
+                <!-- Etykieta dla pola Role -->
+                <label for="role" class="form-label">Role</label>
+                <select id="role" class="select-role" required>
+                    <option value="" disabled selected>Role</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Product Designer">Product Designer</option>
+                    <option value="CTO">CTO</option>
+                    <option value="Development Lead">Development Lead</option>
+                </select>
+
+                <!-- Polityka prywatności -->
+                <label class="privacy-label">
+                    <input type="checkbox" id="privacy" class="checkbox-input" required>
+                    You agree to our friendly&nbsp;<a href="#">privacy policy</a>.
+                </label>
+
+                <!-- Przycisk Submit -->
+                <button type="submit" class="submit-button">SUBMIT</button>
+            </form>
+        </div>
+
+        <!-- Lista członków zespołu poniżej formularza -->
+        <div class="team-list" id="team-list">
+             <!-- Lista członków zespołu będzie dynamicznie generowana przez JavaScript -->
+        </div>
+    </div>
+</body>
+</html>

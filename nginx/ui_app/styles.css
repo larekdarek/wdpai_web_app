@@ -1,0 +1,191 @@
+/* Resetowanie domyślnych stylów przeglądarki */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding-top: 20px; 
+}
+
+/* Główny kontener */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; 
+    padding: 20px;
+}
+
+/* Formularz dodawania członków zespołu */
+.form-container {
+    background-color: #ffffff;
+    padding: 30px; /* Zwiększono padding */
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Tytuł formularza */
+.title {
+    text-align: center;
+    font-size: 1.8rem; 
+    font-weight: 600; 
+    color: #1a202c; 
+    margin-bottom: 20px;
+}
+
+/* Styl formularza */
+.team-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stylowanie etykiet (label) */
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600; 
+    color: #4a5568;  
+    margin-bottom: 5px; 
+    display: block; 
+}
+
+/* Stylowanie pól tekstowych i select */
+.input-text,
+.select-role {
+    margin-bottom: 15px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 1rem;
+    color: #1a202c; 
+    transition: border-color 0.3s;
+}
+
+
+/* Ujednolicenie stylu select */
+.select-role {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%236b46c1' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 50%;
+    padding-right: 30px; 
+}
+
+/* Efekt focus na polach formularza */
+.input-text:focus,
+.select-role:focus {
+    border-color: #3182ce;
+    outline: none;
+}
+
+/* Stylowanie etykiety checkboxa */
+.privacy-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+/* Stylowanie checkboxa */
+.checkbox-input {
+    margin-right: 10px;
+    transform: scale(1.2);  
+}
+
+/* Stylowanie przycisku submit */
+.submit-button {
+    background-color: #805ad5; 
+    color: #ffffff;
+    padding: 12px; 
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%; 
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Efekt hover na przycisku */
+.submit-button:hover {
+    background-color: #6b46c1;
+    transform: translateY(-1px); 
+}
+
+/* Efekt aktywnego przycisku */
+.submit-button:active {
+    background-color: #553c9a;
+    transform: translateY(0);
+}
+
+/* Stylowanie listy członków zespołu */
+.team-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stylowanie pojedynczego członka zespołu */
+.team-member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 16px;
+    margin-bottom: 10px; 
+    border-radius: 8px;
+    border: 1px solid #e2e8f0; 
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); 
+}
+
+/* Stylowanie imienia i nazwiska */
+.team-member .name {
+    font-size: 1rem;
+    font-weight: 600; 
+    color: #2d3748;
+}
+
+/* Stylowanie roli */
+.team-member .role {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 3px; 
+}
+
+/* Kontener na szczegóły członka */
+.team-member .details {
+    display: flex;
+    flex-direction: column; 
+}
+
+/* Stylowanie przycisku usuwania */
+.team-member .delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: #c53030; 
+    transition: color 0.3s;
+}
+
+/* Efekt hover na przycisku usuwania */
+.team-member .delete-btn:hover {
+    color: #9b2c2c;
+}
+
