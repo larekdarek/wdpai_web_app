@@ -1,0 +1,38 @@
+[
+  {
+    "model": "team.teammember",
+    "pk": 1,
+    "fields": {
+      "first_name": "Cameron",
+      "last_name": "Williamson",
+      "role": "Manager"
+    }
+  },
+  {
+    "model": "team.teammember",
+    "pk": 2,
+    "fields": {
+      "first_name": "Thomas",
+      "last_name": "Blue",
+      "role": "Development Lead"
+    }
+  },
+  {
+    "model": "team.teammember",
+    "pk": 3,
+    "fields": {
+      "first_name": "Jack",
+      "last_name": "Sparrow",
+      "role": "Product Designer"
+    }
+  },
+  {
+    "model": "team.teammember",
+    "pk": 4,
+    "fields": {
+      "first_name": "Cthulu",
+      "last_name": "Rylien",
+      "role": "CTO"
+    }
+  }
+]
