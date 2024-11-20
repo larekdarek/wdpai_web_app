@@ -1,0 +1,48 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+.env
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+db.sqlite3
+
+# Node.js / React
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/dist
+/build
+*.env.local
+
+# Docker
+*.env
+docker-compose.override.yml
+
+# Logi i raporty błędów
+pip-log.txt
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Systemy operacyjne
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Edytory i IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# Inne
+*.bak
+*.tmp
