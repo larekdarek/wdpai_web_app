@@ -1,153 +1,160 @@
-# Wdpai Web App
+# Aplikacja Webowa z użyciem Django, React i Dockera
+
+Projekt przedstawia prostą aplikację webową do zarządzania członkami zespołu, zbudowaną przy użyciu **Django** (backend), **React** (frontend) oraz **Docker** do konteneryzacji.
+
+## Spis treści
+
+- [Opis projektu](#opis-projektu)
+- [Funkcjonalności](#funkcjonalności)
+- [Technologie](#technologie)
+- [Wymagania](#wymagania)
+- [Instalacja](#instalacja)
+- [Uruchamianie aplikacji](#uruchamianie-aplikacji)
+- [Dostęp do aplikacji](#dostęp-do-aplikacji)
+- [Korzystanie z API](#korzystanie-z-api)
+- [Logowanie do panelu administracyjnego Django](#logowanie-do-panelu-administracyjnego-django)
+- [Ładowanie danych początkowych](#ładowanie-danych-początkowych)
+- [Autor](#autor)
 
 ## Opis projektu
 
-Wdpai Web App to aplikacja webowa stworzona w ramach zajęć **Wstępu do Projektowania Aplikacji Internetowych**. Aplikacja umożliwia zarządzanie członkami zespołu poprzez interfejs webowy. Technologia backendowa opiera się na Flasku i bazie danych PostgreSQL, a całość jest uruchamiana w kontenerach Docker przy użyciu Docker Compose.
+Aplikacja umożliwia zarządzanie członkami zespołu poprzez interfejs webowy. Użytkownicy mogą dodawać, wyświetlać i usuwać członków zespołu. Projekt jest podzielony na trzy główne komponenty:
+
+- **Backend**: Aplikacja Django udostępniająca API RESTful.
+- **Frontend**: Aplikacja React umożliwiająca interakcję z API.
+- **Baza danych**: PostgreSQL przechowujący dane o członkach zespołu.
 
 ## Funkcjonalności
 
-- **Wyświetlanie listy członków zespołu**: Pobieranie danych z bazy danych PostgreSQL i wyświetlanie ich na stronie.
-- **Dodawanie nowych członków zespołu**: Możliwość dodania nowej osoby poprzez formularz.
-- **Usuwanie członków zespołu**: Usuwanie wybranej osoby z bazy danych.
-- **Interfejs użytkownika**: Przyjazny i responsywny interfejs stworzony przy użyciu HTML, CSS i JavaScript.
-- **API REST**: Backend udostępnia API do komunikacji z frontendem.
+- **Wyświetlanie listy członków zespołu**: Imię, nazwisko i rola każdego członka.
+- **Dodawanie nowych członków**: Formularz do wprowadzania danych nowego członka.
+- **Usuwanie członków**: Możliwość usunięcia istniejącego członka zespołu.
+- **API RESTful**: Backend udostępnia API do zarządzania danymi, co umożliwia łatwą integrację z innymi aplikacjami.
 
-## Technologia
+## Technologie
 
-- **Backend**: Python 3.9, Flask, psycopg2
-- **Baza danych**: PostgreSQL 13
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Serwer webowy**: Nginx
+- **Backend**: Python, Django, Django REST Framework
+- **Frontend**: React, TypeScript, Vite
+- **Baza danych**: PostgreSQL
 - **Konteneryzacja**: Docker, Docker Compose
+- **Inne**: Axios, Django CORS Headers
 
 ## Wymagania
 
-- Docker (wersja 20.x lub nowsza)
-- Docker Compose (wersja 1.27 lub nowsza)
+- **Docker**: [Instalacja Dockera](https://docs.docker.com/get-docker/)
+- **Docker Compose**: [Instalacja Docker Compose](https://docs.docker.com/compose/install/)
 
-## Instalacja i uruchomienie
+## Instalacja
 
-1. **Sklonuj repozytorium:**
+1. **Sklonuj repozytorium na swój lokalny komputer:**
 
    ```bash
    git clone https://github.com/larekdarek/wdpai_web_app.git
    cd wdpai_web_app
    ```
 
-2. **Uruchomienie aplikacji:**
+2. **Upewnij się, że masz zainstalowane Docker i Docker Compose.**
 
-   W katalogu głównym projektu wykonaj:
+## Uruchamianie aplikacji
+
+Uruchom aplikację za pomocą Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+- **`--build`**: Opcja ta wymusza przebudowanie obrazów Dockera, co jest przydatne po zmianach w kodzie.
+
+Aplikacja uruchomi trzy usługi:
+
+- **db**: Baza danych PostgreSQL.
+- **backend**: Aplikacja Django dostępna na porcie 8000.
+- **frontend**: Aplikacja React dostępna na porcie 80.
+
+Aby uruchomić aplikację w tle (w trybie detached), użyj:
+
+```bash
+docker-compose up --build -d
+```
+
+## Dostęp do aplikacji
+
+- **Frontend**: [http://localhost](http://localhost)
+- **Backend API**: [http://localhost:8000/api/](http://localhost:8000/api/)
+- **Panel administracyjny Django**: [http://localhost:8000/admin/](http://localhost:8000/admin/)
+
+## Korzystanie z API
+
+Możesz testować API za pomocą narzędzi takich jak **Postman** lub **curl**.
+
+### Przykładowe żądania:
+
+- **Pobierz listę członków zespołu:**
+
+  ```bash
+  curl http://localhost:8000/api/members/
+  ```
+
+- **Dodaj nowego członka:**
+
+  ```bash
+  curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Anna", "last_name": "Kowalska", "role": "Developer"}' http://localhost:8000/api/members/
+  ```
+
+- **Usuń członka o ID 1:**
+
+  ```bash
+  curl -X DELETE http://localhost:8000/api/members/1/
+  ```
+
+## Logowanie do panelu administracyjnego Django
+
+1. **Utwórz superużytkownika:**
 
    ```bash
-   docker-compose up --build
+   docker-compose exec backend python manage.py createsuperuser
    ```
 
-   Polecenie to zbuduje obrazy Dockerowe i uruchomi kontenery dla wszystkich usług.
+   Podaj nazwę użytkownika, adres e-mail i hasło zgodnie z instrukcjami.
 
-3. **Dostęp do aplikacji:**
+2. **Zaloguj się do panelu administracyjnego:**
 
-   - **Frontend**: Otwórz przeglądarkę i przejdź do [http://localhost:8080](http://localhost:8080)
-   - **pgAdmin**: Dostępny pod adresem [http://localhost:5050](http://localhost:5050)
-     - **Email**: `admin@admin.com`
-     - **Hasło**: `admin`
+   Przejdź do [http://localhost:8000/admin/](http://localhost:8000/admin/) i zaloguj się używając danych superużytkownika.
 
-## Struktura projektu
+3. **Zarządzaj danymi:**
 
-- `nginx/` - konfiguracja i pliki dla serwera Nginx
-  - `default.conf` - plik konfiguracyjny Nginx
-- `python_server/` - kod aplikacji backendowej
-  - `app.py` - główny plik aplikacji Flask
-  - `requirements.txt` - zależności Pythona
-  - `Dockerfile` - plik do budowy obrazu Dockera dla aplikacji Python
-- `postgres_init/` - skrypty inicjalizacyjne dla bazy danych PostgreSQL
-  - `init.sql` - skrypt SQL tworzący tabelę i wstawiający dane początkowe
-- `docker-compose.yml` - definicja usług Docker Compose
-- `README.md` - ten plik
+   Po zalogowaniu możesz dodawać, edytować i usuwać członków zespołu oraz zarządzać innymi aspektami aplikacji.
 
-## Użycie
+## Ładowanie danych początkowych
 
-### Dodawanie nowego członka zespołu
+Jeśli chcesz załadować przykładowe dane do bazy danych, wykonaj poniższe kroki:
 
-1. Otwórz aplikację w przeglądarce pod adresem [http://localhost:8080](http://localhost:8080).
-2. Wypełnij formularz dodawania członka zespołu.
-3. Kliknij przycisk **SUBMIT**.
-4. Nowy członek pojawi się na liście poniżej formularza.
+1. **Upewnij się, że migracje zostały zastosowane:**
 
-### Usuwanie członka zespołu
+   ```bash
+   docker-compose exec backend python manage.py migrate
+   ```
 
-- Kliknij ikonę usuwania obok wybranego członka zespołu na liście.
+2. **Załaduj dane z pliku `initial_data.json`:**
 
-### API
+   ```bash
+   docker-compose exec backend python manage.py loaddata initial_data.json
+   ```
 
-- **GET `/api/team`** - pobiera listę członków zespołu.
-- **POST `/api/team`** - dodaje nowego członka zespołu.
-- **DELETE `/api/team/<id>`** - usuwa członka zespołu o podanym `id`.
+   Plik `initial_data.json` znajduje się w folderze `backend/team/fixtures` i zawiera przykładowe wpisy członków zespołu.
 
-## Testowanie API za pomocą cURL
 
-- **Pobranie listy członków:**
+- **Debugowanie**:
 
-  ```bash
-  curl http://localhost:8080/api/team
-  ```
+  - Aby wyświetlić logi wszystkich kontenerów:
 
-- **Dodanie nowego członka:**
+    ```bash
+    docker-compose logs -f
+    ```
 
-  ```bash
-  curl -X POST -H "Content-Type: application/json" \
-  -d '{"firstName":"Jan","lastName":"Kowalski","role":"Developer"}' \
-  http://localhost:8080/api/team
-  ```
+  - Aby zatrzymać wszystkie usługi:
 
-- **Usunięcie członka o `id` równym 1:**
-
-  ```bash
-  curl -X DELETE http://localhost:8080/api/team/1
-  ```
-
-## Konfiguracja pgAdmin
-
-1. Otwórz pgAdmin pod adresem [http://localhost:5050](http://localhost:5050).
-2. Zaloguj się używając podanych wyżej danych.
-3. Dodaj nowy serwer:
-   - **Name**: Dowolna nazwa, np. `Postgres`
-   - **Connection**:
-     - **Host name/address**: `postgres`
-     - **Port**: `5432`
-     - **Maintenance database**: `mydatabase`
-     - **Username**: `myuser`
-     - **Password**: `mypassword`
-4. Połącz się i przeglądaj bazę danych.
-
-## Zmienne środowiskowe
-
-Zmienne środowiskowe są zdefiniowane w pliku `docker-compose.yml` dla usług:
-
-- **postgres**:
-  - `POSTGRES_USER`
-  - `POSTGRES_PASSWORD`
-  - `POSTGRES_DB`
-- **pgadmin**:
-  - `PGADMIN_DEFAULT_EMAIL`
-  - `PGADMIN_DEFAULT_PASSWORD`
-
-## Przydatne komendy
-
-- **Zatrzymanie wszystkich kontenerów:**
-
-  ```bash
-  docker-compose down
-  ```
-
-- **Ponowne uruchomienie z budowaniem obrazów:**
-
-  ```bash
-  docker-compose up --build
-  ```
-
-- **Wyświetlenie logów:**
-
-  ```bash
-  docker-compose logs
-  ```
+    ```bash
+    docker-compose down
+    ```
 

@@ -1,46 +1,48 @@
-# Ignorowanie folderów IDE
-.idea/
-python_server/.idea/
-
-# Ignorowanie plików Pythona
+# Python / Django
 __pycache__/
 *.py[cod]
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-
-# Ignorowanie plików środowiska wirtualnego
-venv/
-env/
-*.venv
-*.env
-
-# Ignorowanie plików logów
-*.log
-
-# Ignorowanie plików bazy danych
-postgres_data/
 *.sqlite3
-
-# Ignorowanie plików konfiguracyjnych
+*.log
 .env
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+db.sqlite3
+
+# Node.js / React
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/dist
+/build
+*.env.local
+
+# Docker
 *.env
 docker-compose.override.yml
 
-# Ignorowanie plików systemowych
+# Logi i raporty błędów
+pip-log.txt
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Systemy operacyjne
 .DS_Store
 Thumbs.db
+ehthumbs.db
 
-# Ignorowanie plików kompilacji
-*.pyc
-*.pyo
+# Edytory i IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
 
-# Ignorowanie plików testowych
-.coverage
-pytest_cache/
-htmlcov/
-
-# Ignorowanie plików debugowania
-debug.log
+# Inne
+*.bak
+*.tmp
